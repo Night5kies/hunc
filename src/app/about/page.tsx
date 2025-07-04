@@ -62,7 +62,7 @@ export default function AboutPage() {
           name: 'Yahya Handulle',
           title: 'Member Affairs Chair',
           img: '/images/board/yahya.jpeg',
-          bio: `Yahya Handulle is a sophomore in Quincy House, concentrating in Computer Science with a secondary in Earth and Planetary Sciences. Originally from London, he serves as Secretary for the Black Men's Forum and is involved in the Harvard Islamic Society, SWAN (Service With A Name), the PBHA, and FIP, Harvard's pre-orientation program for international students. He is passionate about social mobility, technology, and public service. In his free time, he enjoys Brazilian Jiu-Jitsu, traveling, and the outdoors.`,
+          bio: `Yahya Handulle is a sophomore in Quincy House, concentrating in Computer Science with a secondary in Earth and Planetary Sciences. Originally from London, he serves as Secretary for the Black Men&rsquo;s Forum and is involved in the Harvard Islamic Society, SWAN (Service With A Name), the PBHA, and FIP, Harvard&rsquo;s pre-orientation program for international students. He is passionate about social mobility, technology, and public service. In his free time, he enjoys Brazilian Jiu-Jitsu, traveling, and the outdoors.`,
         },
         {
           name: 'Maggie Peng',
