@@ -10,7 +10,7 @@ const events = [ // Need at least 3 images per event for the scroll carousel to 
   {
     title: "Women's Week Collab",
     description:
-      "A negotiation simulation based on diplomat Madeline Branch&rsquo;s experiences gave students hands-on practice and concluded with a discussion on her career and women in international policy.",
+      "A negotiation simulation based on diplomat Madeline Branch's experiences gave students hands-on practice and concluded with a discussion on her career and women in international policy.",
     images: [
       "/images/past_events/2025/women's week collab/womens-week-1.jpg",
       "/images/past_events/2025/women's week collab/womens-week-2.jpg",

@@ -123,13 +123,13 @@ export default function Home() {
                   New Internship Collaborations
                 </h3>
                 <p className="text-lg-paragraph">
-                  We've been working to find internships opportunities for our members that complete our negotiation training program throughout the semester. Currently, we are in promising conversations with a Harvard Law School-based program and UK-based negotiation consulting firm to take on interns from our club startin next semester!
+                  We&apos;ve been working to find internships opportunities for our members that complete our negotiation training program throughout the semester. Currently, we are in promising conversations with a Harvard Law School-based program and UK-based negotiation consulting firm to take on interns from our club startin next semester!
                 </p>
                 <h3 className="bold-text ml-8">
                   Negotiation Curriculum Coming to the College!
                 </h3>
                 <p className="text-lg-paragraph">
-                  We recently communicated with the College Academic Dean to advocate for negotiation education at the undergraduate level. We're excited to share that a General Education course on Negotiation is confirmed for Fall 2026! The Dean has added this to her priority list, and we’re continuing conversations about collaboration opportunities in third spaces around the College.
+                  We recently communicated with the College Academic Dean to advocate for negotiation education at the undergraduate level. We&apos;re excited to share that a General Education course on Negotiation is confirmed for Fall 2026! The Dean has added this to her priority list, and we’re continuing conversations about collaboration opportunities in third spaces around the College.
 
                 </p>
                 
