@@ -90,14 +90,14 @@ export default function Home() {
 
           <div style={{ width: '30%', margin: '0 auto' }}>
                 <Image
-                  src="/images/Handshake.jpg"       // static import so Next.js knows the intrinsic size
+                  src="/images/handshake.jpg"      
                   alt="Handshake"
                   width={500}
                   height={500}
                   style={{
-                    width: '100%',      // fill that 50%-wide container
-                    height: 'auto',     // keep the original aspect ratio
-                    display: 'block',   // ensure no extra inline spacing
+                    width: '100%',      
+                    height: 'auto',     
+                    display: 'block',  
                   }}
                 />
               </div>
