@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { LazyMotion, domAnimation, motion } from 'framer-motion';
 
 export default function Home() {
