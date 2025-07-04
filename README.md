@@ -9,6 +9,8 @@ Used Scroll Carousel for Past Events Page https://asif-jalil.github.io/scroll-ca
 
 CSS implemented pretty messily, cleanup task for future Tech Chairs if I don't get around to it haha o7
 
+Website hosted on Vercel
+
 To dos:
     Add Board Group Pic
     Make it a nicer design
