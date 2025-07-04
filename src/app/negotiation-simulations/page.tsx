@@ -4,6 +4,13 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
 
+type eventData = {
+  id: number;
+  title: string;
+  imageUrl: string;
+  description: string;
+};
+
 const events = [
   {
     id: 1,
@@ -21,9 +28,9 @@ const events = [
 ];
 
 export default function NegotiationSimulations() {
-  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [selectedEvent, setSelectedEvent] = useState<eventData | null>(null);
 
-  const openModal = (event) => setSelectedEvent(event);
+  const openModal = (event: eventData) => setSelectedEvent(event);
   const closeModal = () => setSelectedEvent(null);
 
   return (
@@ -90,7 +97,7 @@ export default function NegotiationSimulations() {
                 </button>
                 <div className="flex flex-col sm:flex-row">
                   <div className="sm:w-1/2 p-6 flex items-center justify-center">
-                    <img
+                    <Image
                       src={selectedEvent.imageUrl}
                       alt={selectedEvent.title}
                       className="max-h-140 rounded-lg"

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { LazyMotion, domAnimation, motion } from 'framer-motion';
+import { LazyMotion, domAnimation, motion, easeOut } from 'framer-motion';
 
 export default function AboutPage() {
   type Member = {
@@ -97,7 +97,7 @@ export default function AboutPage() {
     initial: { scale: 0.5, opacity: 0 },
     whileInView: { scale: 1, opacity: 1 },
     viewport: { once: true },
-    transition: { duration: 0.8, ease: 'easeOut' },
+    transition: { duration: 0.8, ease: easeOut },
   };
 
   return (
