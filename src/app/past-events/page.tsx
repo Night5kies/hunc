@@ -2,10 +2,11 @@
 
 import { useEffect } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import 'scroll-carousel/dist/scroll.carousel.min.css';
 
 
-const events = [
+const events = [ // Need at least 3 images per event for the scroll carousel to work properly
   {
     title: "Women's Week Collab",
     description:
@@ -46,11 +47,11 @@ export default function PastEvents() {
             const elements = document.querySelectorAll('.my-carousel');
 
             elements.forEach((el) => {
-            new ScrollCarousel(el, {
-                speed: 6,
-                smartSpeed: true,
-                autoplay: true,
-            });
+                new ScrollCarousel(el, {
+                    speed: 6,
+                    smartSpeed: true,
+                    autoplay: true,
+                });
             });
         };
 
@@ -59,41 +60,48 @@ export default function PastEvents() {
         }
     }, []);
 
-
-
-  return (
-    <div className="bg-white min-h-screen px-6 py-20">
-      <header className="text-center mb-12">
-        <h1 className="page-title">Past Events</h1>
-      </header>
-
-        <div className="space-y-12">
-            {events.map((event, idx) => (
-                <div
-                    key={idx}
-                    className="w-[80%] p-5 mx-auto border border-black bg-white rounded-2xl shadow-lg ring-2 ring-black overflow-hidden cursor-pointer"
+    return (
+        <div className="bg-white min-h-screen px-6 py-20">
+            <header className="text-center mb-12">
+                <motion.h1 
+                    className="page-title"
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
                 >
-                    <h2 className="text-2xl font-semibold text-black mb-2">
-                    {event.title}
-                    </h2>
-                    <p className="text-gray-700 text-base mb-4">{event.description}</p>
-                    <div className="my-carousel" data-scroll-carousel>
-                        {event.images.map((src, i) => (
-                            <div key={i} className="my-slide">
-                                <Image
-                                    src={src}
-                                    alt={`Event ${idx + 1} - Image ${i + 1}`}
-                                    width={300}
-                                    height={400} 
-                                    className="rounded-lg object-cover h-[400px] w-auto"
-                                />
-                            </div>
-                        ))}
-                    </div>
+                    Past Events
+                </motion.h1>
+            </header>
 
-                </div>
-            ))}
+            <div className="space-y-12">
+                {events.map((event, idx) => (
+                    <motion.div
+                        key={idx}
+                        className="w-[80%] p-5 mx-auto border border-black bg-white rounded-2xl shadow-lg ring-2 ring-black overflow-hidden cursor-pointer"
+                        initial={{ opacity: 0, y: 40 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: idx * 0.2 }}
+                    >
+                        <h2 className="text-2xl font-semibold text-black mb-2">
+                            {event.title}
+                        </h2>
+                        <p className="text-gray-700 text-base mb-4">{event.description}</p>
+                        <div className="my-carousel" data-scroll-carousel>
+                            {event.images.map((src, i) => (
+                                <div key={i} className="my-slide">
+                                    <Image
+                                        src={src}
+                                        alt={`Event ${idx + 1} - Image ${i + 1}`}
+                                        width={300}
+                                        height={400}
+                                        className="rounded-lg object-cover h-[400px] w-auto"
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
         </div>
-    </div>
-  );
+    );
 }
