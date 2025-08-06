@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
+import { ResponsiveContainer, ResponsiveSection, ResponsiveCard } from '@/components';
 
 type eventData = {
   id: number;
@@ -35,11 +36,11 @@ export default function NegotiationSimulations() {
 
   return (
     <LazyMotion features={domAnimation}>
-      <div className="min-h-screen bg-[url('/images/leavesbgl.png')] bg-cover bg-center h-full w-full text-black">
-        <main className="max-w-6xl mx-auto px-6 py-12">
+      <ResponsiveSection background="white" padding="lg" className="min-h-screen bg-[url('/images/leavesbgl.png')] bg-cover bg-center">
+        <ResponsiveContainer maxWidth="6xl">
           <header className="text-center mb-12">
             <m.h1
-              className="page-title"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 border-b-4 border-green-600 inline-block"
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -49,7 +50,7 @@ export default function NegotiationSimulations() {
           </header>
 
           <m.div
-            className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+            className="grid gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ staggerChildren: 0.2, duration: 0.8, ease: 'easeOut' }}
@@ -87,27 +88,29 @@ export default function NegotiationSimulations() {
           </m.div>
 
           {selectedEvent && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-50 backdrop-blur-sm" onClick={closeModal}>
-              <div className="bg-white ring-2 ring-gray-500 rounded-2xl overflow-hidden max-w-4xl w-full mx-4 relative" onClick={(e) => e.stopPropagation()}>
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4" onClick={closeModal}>
+              <div className="bg-white ring-2 ring-gray-500 rounded-2xl overflow-hidden max-w-4xl w-full relative max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
                 <button
                   onClick={closeModal}
-                  className="absolute top-1 right-4 text-3xl hover:text-gray-600 cursor-pointer"
+                  className="absolute top-2 right-4 text-2xl md:text-3xl hover:text-gray-600 cursor-pointer z-10"
                 >
                   &times;
                 </button>
-                <div className="flex flex-col sm:flex-row">
-                  <div className="sm:w-1/2 p-6 flex items-center justify-center">
+                <div className="flex flex-col md:flex-row">
+                  <div className="w-full md:w-1/2 p-4 md:p-6 flex items-center justify-center">
                     <Image
                       src={selectedEvent.imageUrl}
                       alt={selectedEvent.title}
-                      className="max-h-140 rounded-lg"
+                      width={400}
+                      height={300}
+                      className="w-full h-auto max-h-80 rounded-lg object-cover"
                     />
                   </div>
-                  <div className="sm:w-1/2 p-6 flex flex-col justify-center">
-                    <h2 className="text-2xl font-semibold mb-4">
+                  <div className="w-full md:w-1/2 p-4 md:p-6 flex flex-col justify-center">
+                    <h2 className="text-xl sm:text-2xl font-semibold mb-4">
                       {selectedEvent.title}
                     </h2>
-                    <p className="text-lg-paragraph">
+                    <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
                       {selectedEvent.description}
                     </p>
                   </div>
@@ -115,8 +118,8 @@ export default function NegotiationSimulations() {
               </div>
             </div>
           )}
-        </main>
-      </div>
+        </ResponsiveContainer>
+      </ResponsiveSection>
     </LazyMotion>
   );
 }

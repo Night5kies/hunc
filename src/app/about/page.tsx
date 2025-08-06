@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { LazyMotion, domAnimation, motion, easeOut } from 'framer-motion';
+import { ResponsiveContainer, ResponsiveSection, ResponsiveCard } from '@/components';
 
 export default function AboutPage() {
   type Member = {
@@ -103,136 +104,143 @@ export default function AboutPage() {
   return (
     <LazyMotion features={domAnimation}>
       {/* Outermost wrapper */}
-      <motion.div
-        className="bg-white text-black pt-36 pb-16 px-4"
-        
-      >
+      <ResponsiveSection background="white" padding="lg">
         {/* Page Intro */}
-        <motion.div className="max-w-4xl mx-auto text-center mb-20" {...viewProps}>
-          <motion.h1 className="page-title" {...viewProps}>
-            About the Harvard Undergraduate Negotiation Club
-          </motion.h1>
-          <motion.p className="text-lg-paragraph" {...viewProps}>
-            The Harvard Undergraduate Negotiation Club (HUNC) is dedicated to fostering the next
-            generation of strategic thinkers, communicators, and leaders. Through simulations,
-            workshops, and mentorship opportunities, HUNC equips students with practical negotiation
-            skills and cultivates a community of individuals passionate about leadership,
-            diplomacy, and collaborative problem-solving.
-          </motion.p>
-        </motion.div>
+        <ResponsiveContainer maxWidth="4xl">
+          <motion.div className="text-center mb-16 md:mb-20" {...viewProps}>
+            <motion.h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 border-b-4 border-green-600 inline-block" {...viewProps}>
+              About the Harvard Undergraduate Negotiation Club
+            </motion.h1>
+            <motion.p className="text-base sm:text-lg text-gray-600 leading-relaxed" {...viewProps}>
+              The Harvard Undergraduate Negotiation Club (HUNC) is dedicated to fostering the next
+              generation of strategic thinkers, communicators, and leaders. Through simulations,
+              workshops, and mentorship opportunities, HUNC equips students with practical negotiation
+              skills and cultivates a community of individuals passionate about leadership,
+              diplomacy, and collaborative problem-solving.
+            </motion.p>
+          </motion.div>
+        </ResponsiveContainer>
 
         {/* Board Member Sections */}
         {sections.map((section) => (
-          <motion.div key={section.title} className="max-w-7xl mx-auto mb-16" {...viewProps}>
-            <motion.h2 className="text-4xl font-bold mb-10 text-center" {...viewProps}>
-              {section.title}
-            </motion.h2>
+          <ResponsiveContainer key={section.title} maxWidth="7xl">
+            <motion.div className="mb-16 text-center" {...viewProps}>
+              <motion.h2 className="text-3xl sm:text-4xl font-bold mb-8 md:mb-10 border-b-2 border-green-600 inline-block" {...viewProps}>
+                {section.title}
+              </motion.h2>
 
-            <motion.div className="flex flex-wrap justify-center gap-10" {...viewProps}>
-              {[...section.members].map((member) => (
-                <motion.article
-                  key={member.name}
-                  role="button"
-                  tabIndex={0}
-                  onClick={() => setActiveBio(member)}
-                  className="w-72 group bg-white rounded-2xl shadow-xl ring-2 ring-gray-400 hover:ring-black transform transition duration-300 hover:scale-105 overflow-hidden cursor-pointer"
-                  {...viewProps}
-                >
-                  <div className="relative h-64 w-full">
-                    <Image
-                      src={member.img}
-                      alt={member.name}
-                      fill
-                      className="object-cover"
-                    />
-                    {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent opacity-40 group-hover:opacity-60 transition-opacity" />
-                    {/* Title overlay */}
-                    <h2 className="absolute bottom-4 left-4 text-2xl font-semibold text-white drop-shadow-lg">
-                      {member.name}
-                    </h2>
-                  </div>
+              <motion.div className="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-10 max-w-6xl mx-auto" {...viewProps}>
+                {[...section.members].map((member) => (
+                  <motion.article
+                    key={member.name}
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => setActiveBio(member)}
+                        className="group bg-white rounded-2xl shadow-xl ring-2 ring-gray-400 hover:ring-black transform transition duration-300 hover:scale-105 overflow-hidden cursor-pointer w-56 sm:w-64 md:w-72 flex-shrink-0"
+                    {...viewProps}
+                  >
+                    <div className="relative h-48 sm:h-56 md:h-64 w-full">
+                      <Image
+                        src={member.img}
+                        alt={member.name}
+                        fill
+                        className="object-cover"
+                      />
+                      {/* Gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent opacity-40 group-hover:opacity-60 transition-opacity" />
+                      {/* Title overlay */}
+                      <h2 className="absolute bottom-4 left-4 right-4 text-lg sm:text-xl md:text-2xl font-semibold text-white drop-shadow-lg leading-tight">
+                        {member.name}
+                      </h2>
+                    </div>
 
-                  <div className="p-3 border-t border-gray-100">
-                    <p className="text-sm italic text-gray-600">{member.title}</p>
-                  </div>
-                </motion.article>
-              ))}
+                    <div className="p-4 border-t border-gray-100 text-center">
+                      <p className="text-sm font-medium text-gray-700">{member.title}</p>
+                    </div>
+                  </motion.article>
+                ))}
+              </motion.div>
+
             </motion.div>
-
-          </motion.div>
+          </ResponsiveContainer>
         ))}
 
         {/* Faculty Advisor Section */}
-        <motion.section
-          className="py-15 px-6 text-black relative"
-          initial={{ scale: 0.5, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-        >
-          <div className="relative ml-[15%] w-[70%] bg-gray-100 p-8 rounded-lg overflow-visible">
-            <div className="relative pl-4">
-              <h2 className="subtitle">
-                Faculty Advisor
-              </h2>
-              <Image
-                src="/images/brian.jpg"
-                alt="Brian Mandell"
-                width={200}
-                height={200}
-              />
-              <p className="text-lg-paragraph">
-                Brian Mandell is the Mohamad Kamal Senior Lecturer in Negotiation and Public Policy,
-                Vice Chair for Executive Education for the Program on Negotiation at Harvard Law
-                School, and the Faculty Chair of the Negotiation and Conflict Resolution Collaboratory
-                at the Harvard Kennedy School. His teaching and research emphasize third-party
-                facilitation and consensus building in domestic and international protracted policy
-                disputes. He is recognized for his ability to distill complicated theories into
-                accessible insights, earning a reputation for his intellectually rigorous courses.
-              </p>
-            </div>
-          </div>
-        </motion.section>
+        <ResponsiveSection background="gray" padding="lg">
+          <motion.div
+            initial={{ scale: 0.5, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+          >
+            <ResponsiveContainer maxWidth="4xl">
+              <ResponsiveCard variant="filled" className="relative overflow-visible">
+                <div className="relative pl-4">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 border-b-2 border-green-600 inline-block">
+                    Faculty Advisor
+                  </h2>
+                  <div className="flex flex-col md:flex-row gap-6 items-start">
+                    <Image
+                      src="/images/brian.jpg"
+                      alt="Brian Mandell"
+                      width={200}
+                      height={200}
+                      className="rounded-lg shadow-md"
+                    />
+                    <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
+                      Brian Mandell is the Mohamad Kamal Senior Lecturer in Negotiation and Public Policy,
+                      Vice Chair for Executive Education for the Program on Negotiation at Harvard Law
+                      School, and the Faculty Chair of the Negotiation and Conflict Resolution Collaboratory
+                      at the Harvard Kennedy School. His teaching and research emphasize third-party
+                      facilitation and consensus building in domestic and international protracted policy
+                      disputes. He is recognized for his ability to distill complicated theories into
+                      accessible insights, earning a reputation for his intellectually rigorous courses.
+                    </p>
+                  </div>
+                </div>
+              </ResponsiveCard>
+            </ResponsiveContainer>
+          </motion.div>
+        </ResponsiveSection>
 
         {/* Active Bio Modal */}
         {activeBio && (
           <motion.div
-            className="fixed inset-0 bg-black/40 backdrop-blur-md backdrop-saturate-150 flex items-center justify-center z-50"
+            className="fixed inset-0 bg-black/40 backdrop-blur-md backdrop-saturate-150 flex items-center justify-center z-50 p-4"
             onClick={() => setActiveBio(null)}
           >
             <motion.div
-              className="bg-white min-h-[30%] ring-2 ring-gray-500 rounded-2xl p-6  max-w-4xl w-full relative flex flex-col md:flex-row gap-6"
+              className="bg-white min-h-[30%] ring-2 ring-gray-500 rounded-2xl p-4 md:p-6 max-w-4xl w-full relative flex flex-col md:flex-row gap-4 md:gap-6 max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
               {...viewProps}
             >
               <motion.button
                 onClick={() => setActiveBio(null)}
-                className="absolute top-1 right-4 text-3xl hover:text-gray-600 cursor-pointer"
+                className="absolute top-2 right-4 text-2xl md:text-3xl hover:text-gray-600 cursor-pointer z-10"
                 {...viewProps}
               >
                 &times;
               </motion.button>
 
-              <motion.div className="w-full md:w-1/3 relative h-64 rounded-lg overflow-hidden" {...viewProps}>
+              <motion.div className="w-full md:w-1/3 relative h-48 md:h-64 rounded-lg overflow-hidden" {...viewProps}>
                 <Image src={activeBio.img} alt={activeBio.name} fill className="object-cover" />
               </motion.div>
 
               <motion.div className="w-full md:w-2/3" {...viewProps}>
-                <motion.h3 className="subtitle" {...viewProps}>
+                <motion.h3 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 border-b-2 border-green-600 inline-block" {...viewProps}>
                   {activeBio.name}
                 </motion.h3>
-                <motion.p className="bold-text" {...viewProps}>
+                <motion.p className="text-xl sm:text-2xl font-semibold mb-3 text-green-600" {...viewProps}>
                   {activeBio.title}
                 </motion.p>
-                <motion.p className="text-lg-paragraph" {...viewProps}>
+                <motion.p className="text-base sm:text-lg text-gray-600 leading-relaxed" {...viewProps}>
                   {activeBio.bio}
                 </motion.p>
               </motion.div>
             </motion.div> 
           </motion.div>
         )}
-      </motion.div>
+      </ResponsiveSection>
     </LazyMotion>
   );
 }

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import 'scroll-carousel/dist/scroll.carousel.min.css';
+import { ResponsiveContainer, ResponsiveSection, ResponsiveCard } from '@/components';
 
 
 const events = [ // Need at least 3 images per event for the scroll carousel to work properly
@@ -61,31 +62,33 @@ export default function PastEvents() {
     }, []);
 
     return (
-        <div className="bg-white min-h-screen px-6 py-20">
-            <header className="text-center mb-12">
-                <motion.h1 
-                    className="page-title"
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                >
-                    Past Events
-                </motion.h1>
-            </header>
+        <ResponsiveSection background="white" padding="lg">
+            <ResponsiveContainer maxWidth="6xl">
+                <header className="text-center mb-12">
+                    <motion.h1 
+                        className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 border-b-4 border-green-600 inline-block"
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        Past Events
+                    </motion.h1>
+                </header>
 
-            <div className="space-y-12">
+                <div className="space-y-8 md:space-y-12">
                 {events.map((event, idx) => (
                     <motion.div
                         key={idx}
-                        className="w-[80%] p-5 mx-auto border border-black bg-white rounded-2xl shadow-lg ring-2 ring-black overflow-hidden cursor-pointer"
+                        className="w-full max-w-4xl mx-auto"
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: idx * 0.2 }}
                     >
-                        <h2 className="text-2xl font-semibold text-black mb-2">
-                            {event.title}
-                        </h2>
-                        <p className="text-gray-700 text-base mb-4">{event.description}</p>
+                        <ResponsiveCard variant="elevated" className="border border-gray-300">
+                            <h2 className="text-xl sm:text-2xl font-semibold text-black mb-3">
+                                {event.title}
+                            </h2>
+                            <p className="text-gray-700 text-base sm:text-lg mb-6">{event.description}</p>
                         <div className="my-carousel" data-scroll-carousel>
                             {event.images.map((src, i) => (
                                 <div key={i} className="my-slide">
@@ -99,9 +102,11 @@ export default function PastEvents() {
                                 </div>
                             ))}
                         </div>
+                        </ResponsiveCard>
                     </motion.div>
                 ))}
-            </div>
-        </div>
+                </div>
+            </ResponsiveContainer>
+        </ResponsiveSection>
     );
 }

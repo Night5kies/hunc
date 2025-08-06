@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { LazyMotion, domAnimation, motion } from 'framer-motion';
+import { ResponsiveContainer, ResponsiveSection, ResponsiveCard } from '@/components';
 
 export default function Home() {
   return (
@@ -16,91 +17,97 @@ export default function Home() {
             className="absolute inset-0 bg-cover bg-center opacity-20"
             style={{ backgroundImage: "url('/images/Harvard_University_Widener_Library.jpg')" }}
           ></div>
-          <div className="relative z-10 flex flex-col items-center justify-center text-center h-full px-0">
+          <ResponsiveContainer className="relative z-10 flex flex-col items-center justify-center text-center h-full">
             <motion.div
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, ease: 'easeOut' }}
             >
-              <h1 className="text-4xl md:text-6xl font-semibold tracking-tight leading-tight w-full">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight">
                 Harvard Undergraduate Negotiation Club
               </h1>
-              <p className="mt-4 text-lg md:text-xl w-full text-gray-300 font-light">
+              <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-300 font-light">
                 Mastering Negotiation, Empowering Leaders
               </p>
             </motion.div>
-          </div>
+          </ResponsiveContainer>
         </header>
 
 
         <div className="bg-white">
           {/* Mission Section */}
-          <motion.section
-            className="py-15 px-6 bg-white text-black relative"
-            initial={{ x: '100%', opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-          >
-            <div className="relative ml-[15%] w-[70%] bg-gray-100 p-8 rounded-lg overflow-visible">
-              <div
-                className="absolute left-0 top-0 h-full w-2 bg-green-600 rounded-l-lg"
-                aria-hidden="true"
-              />
-              <div className="relative pl-4">
-                <h2 className="subtitle">
-                  Mission
-                </h2>
-                <p className='text-lg-paragraph'>
-                  At the Harvard Undergraduate Negotiation Club, we believe negotiation is a fundamental
-                  skill that extends beyond the boardroom—shaping careers, relationships, and leadership.
-                  Our mission is to cultivate a generation of confident and strategic negotiators by providing
-                  hands-on training, immersive experiences, and access to expert insights.
-                </p>
-              </div>
-            </div>  
-          </motion.section>
+          <ResponsiveSection background="white" padding="lg">
+            <motion.div
+              initial={{ x: '100%', opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+            >
+              <ResponsiveContainer maxWidth="4xl">
+                <ResponsiveCard variant="filled" className="relative overflow-visible">
+                  <div
+                    className="absolute left-0 top-0 h-full w-2 bg-green-600 rounded-l-lg"
+                    aria-hidden="true"
+                  />
+                  <div className="relative pl-4">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 border-b-2 border-green-600 inline-block">
+                      Mission
+                    </h2>
+                    <p className='text-base sm:text-lg text-gray-600 leading-relaxed'>
+                      At the Harvard Undergraduate Negotiation Club, we believe negotiation is a fundamental
+                      skill that extends beyond the boardroom—shaping careers, relationships, and leadership.
+                      Our mission is to cultivate a generation of confident and strategic negotiators by providing
+                      hands-on training, immersive experiences, and access to expert insights.
+                    </p>
+                  </div>
+                </ResponsiveCard>
+              </ResponsiveContainer>
+            </motion.div>
+          </ResponsiveSection>
 
           {/* Our Work Section */}
-          <motion.section
-            className="py-15 px-6 bg-gray-100 text-black"
-            initial={{ x: '-100%', opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-          >
-            <div className="relative mr-[15%] ml-auto w-[70%] bg-white p-8 rounded-lg overflow-visible text-right">
-              <div
-                className="absolute right-0 top-0 h-full w-2 bg-green-600 rounded-r-lg"
-                aria-hidden="true"
-              />
-              <div className="relative pr-4">
-                <h2 className="subtitle">
-                  Our Work
-                </h2>
-                <p className="text-lg-paragraph">
-                  Through interactive workshops and realistic negotiation simulations, we offer students the
-                  opportunity to apply theory to practice. Members role-play real-world scenarios, strengthening
-                  their ability to communicate, think strategically, and lead effectively in a collaborative setting.
-                </p>
-              </div>
-            </div>
-          </motion.section>
+          <ResponsiveSection background="gray" padding="lg">
+            <motion.div
+              initial={{ x: '-100%', opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+            >
+              <ResponsiveContainer maxWidth="4xl">
+                <ResponsiveCard variant="default" className="relative overflow-visible text-right">
+                  <div
+                    className="absolute right-0 top-0 h-full w-2 bg-green-600 rounded-r-lg"
+                    aria-hidden="true"
+                  />
+                  <div className="relative pr-4">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 border-b-2 border-green-600 inline-block">
+                      Our Work
+                    </h2>
+                    <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
+                      Through interactive workshops and realistic negotiation simulations, we offer students the
+                      opportunity to apply theory to practice. Members role-play real-world scenarios, strengthening
+                      their ability to communicate, think strategically, and lead effectively in a collaborative setting.
+                    </p>
+                  </div>
+                </ResponsiveCard>
+              </ResponsiveContainer>
+            </motion.div>
+          </ResponsiveSection>
 
 
-          <div style={{ width: '30%', margin: '0 auto' }}>
+          <ResponsiveSection background="white" padding="md">
+            <ResponsiveContainer maxWidth="2xl">
+              <div className="w-full max-w-md mx-auto">
                 <Image
                   src="/images/handshake.jpg"      
                   alt="Handshake"
                   width={500}
                   height={500}
-                  style={{
-                    width: '100%',      
-                    height: 'auto',     
-                    display: 'block',  
-                  }}
+                  className="w-full h-auto rounded-lg shadow-lg"
                 />
               </div>
+            </ResponsiveContainer>
+          </ResponsiveSection>
 
           <motion.section
             className="py-15 px-6 bg-white text-black relative"
@@ -138,42 +145,40 @@ export default function Home() {
 
 
           {/* Partners Section */}
-          <motion.section
-            className="py-15 px-6 bg-white text-black relative"
-            initial={{ x: '100%', opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-          >
-            <div className="relative mr-[15%] ml-auto w-[70%] bg-white p-8 rounded-lg overflow-visible text-right">
-              <div
-                className="absolute right-0 top-0 h-full w-2 bg-green-600 rounded-r-lg"
-                aria-hidden="true"
-              />
+          <ResponsiveSection background="white" padding="lg">
+            <motion.div
+              initial={{ x: '100%', opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+            >
+              <ResponsiveContainer maxWidth="6xl">
+                <ResponsiveCard variant="default" className="relative overflow-visible">
+                  <div className="text-center mb-8">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 border-b-2 border-green-600 inline-block">
+                      Our Partners
+                    </h2>
+                  </div>
 
-              <div className="relative pr-4">
-                <h2 className="text-3xl md:text-4xl font-semibold mb-4 border-b-2 border-green-600 inline-block">
-                  Our Partners
-                </h2>
-
-                <div className="flex w-full mt-6">
-                  {['HLS_PON.png', 'FAS_HCWC.png', 'HKS_CPL.png', 'NTF.jpg'].map((src, i) => (
-                    <div key={i} className="flex-1 mx-2 p-4 bg-white rounded-lg shadow">
-                      <div className="relative w-full h-48">
-                        <Image
-                          src={`/images/${src}`}
-                          alt={`Partner ${i + 1}`}
-                          fill
-                          className="object-contain"
-                          unoptimized
-                        />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                    {['HLS_PON.png', 'FAS_HCWC.png', 'HKS_CPL.png', 'NTF.jpg'].map((src, i) => (
+                      <div key={i} className="p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                        <div className="relative w-full h-32 md:h-48">
+                          <Image
+                            src={`/images/${src}`}
+                            alt={`Partner ${i + 1}`}
+                            fill
+                            className="object-contain"
+                            unoptimized
+                          />
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </motion.section>
+                    ))}
+                  </div>
+                </ResponsiveCard>
+              </ResponsiveContainer>
+            </motion.div>
+          </ResponsiveSection>
         </div>
 
 
