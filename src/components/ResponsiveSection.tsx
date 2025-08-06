@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 interface ResponsiveSectionProps {
   children: React.ReactNode;
   className?: string;
-  as?: keyof JSX.IntrinsicElements;
+  as?: keyof React.JSX.IntrinsicElements;
   background?: 'white' | 'gray' | 'black' | 'green';
   padding?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
   alignment?: 'left' | 'center' | 'right';

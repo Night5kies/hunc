@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 interface ResponsiveCardProps {
   children: React.ReactNode;
   className?: string;
-  as?: keyof JSX.IntrinsicElements;
+  as?: keyof React.JSX.IntrinsicElements;
   variant?: 'default' | 'elevated' | 'outlined' | 'filled';
   padding?: 'none' | 'sm' | 'md' | 'lg';
   hover?: boolean;

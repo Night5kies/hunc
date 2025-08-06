@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
-import { ResponsiveContainer, ResponsiveSection, ResponsiveCard } from '@/components';
+import { ResponsiveContainer, ResponsiveSection } from '@/components';
 
 type eventData = {
   id: number;

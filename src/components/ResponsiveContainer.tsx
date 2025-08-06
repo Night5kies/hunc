@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 interface ResponsiveContainerProps {
   children: React.ReactNode;
   className?: string;
-  as?: keyof JSX.IntrinsicElements;
+  as?: keyof React.JSX.IntrinsicElements;
   padding?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
   maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | 'full';
   centered?: boolean;
