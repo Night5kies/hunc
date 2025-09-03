@@ -5,6 +5,7 @@ import { ResponsiveNavigation } from "@/components";
 export const metadata: Metadata = {
   title: "Harvard Undergraduate Negotiation Club",
   description: "Mastering Negotiation, Empowering Leaders",
+  icons: { icon: [{ url: '/icon.png?v=2' }] } 
 };
 
 export default function RootLayout({
