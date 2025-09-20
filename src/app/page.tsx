@@ -4,8 +4,19 @@ import React from 'react';
 import Image from 'next/image';
 import { LazyMotion, domAnimation, motion } from 'framer-motion';
 import { ResponsiveContainer, ResponsiveSection, ResponsiveCard } from '@/components';
+import HeroRotator from '@/components/HeroRotator';
 
 export default function Home() {
+  const cardContainer = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.14 } },
+  };
+
+  const cardItem = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
   return (
     // Wrap everything in LazyMotion so scroll/viewport features load
     <LazyMotion features={domAnimation}>
@@ -13,10 +24,14 @@ export default function Home() {
 
         {/* Hero Section */}
         <header className="relative h-screen bg-black">
-          <div
-            className="absolute inset-0 bg-cover bg-center opacity-20"
-            style={{ backgroundImage: "url('/images/Harvard_University_Widener_Library.jpg')" }}
-          ></div>
+          {/* use Next/Image fill with object-cover so the photo always scales proportionally to cover the header */}
+          <Image
+            src="/images/Harvard_University_Widener_Library.jpg"
+            alt="Harvard Widener Library"
+            fill
+            className="absolute inset-0 object-cover object-center opacity-20"
+            unoptimized
+          />
           <ResponsiveContainer className="relative z-10 flex flex-col items-center justify-center text-center h-full">
             <motion.div
               initial={{ scale: 0.5, opacity: 0 }}
@@ -29,73 +44,87 @@ export default function Home() {
               <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-300 font-light">
                 Mastering Negotiation, Empowering Leaders
               </p>
+              <HeroRotator />
             </motion.div>
           </ResponsiveContainer>
         </header>
 
 
         <div className="bg-white">
-          {/* Mission Section */}
-          <ResponsiveSection background="white" padding="lg">
+          <ResponsiveSection background="white" padding="md">
             <motion.div
               initial={{ x: '100%', opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: 'easeOut' }}
             >
-              <ResponsiveContainer maxWidth="4xl">
-                <ResponsiveCard variant="filled" className="relative overflow-visible">
-                  <div
-                    className="absolute left-0 top-0 h-full w-2 bg-green-600 rounded-l-lg"
-                    aria-hidden="true"
-                  />
-                  <div className="relative pl-4">
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 border-b-2 border-green-600 inline-block">
-                      Mission
-                    </h2>
-                    <p className='text-base sm:text-lg text-gray-600 leading-relaxed'>
-                      At the Harvard Undergraduate Negotiation Club, we believe negotiation is a fundamental
-                      skill that extends beyond the boardroom—shaping careers, relationships, and leadership.
-                      Our mission is to cultivate a generation of confident and strategic negotiators by providing
-                      hands-on training, immersive experiences, and access to expert insights.
-                    </p>
-                  </div>
-                </ResponsiveCard>
+              <ResponsiveContainer maxWidth="5xl">
+                <motion.div
+                  className="grid grid-cols-1 md:grid-cols-3 gap-6"
+                  variants={cardContainer}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.2 }}
+                >
+                  {/* Mission Card */}
+                  <motion.div variants={cardItem}>
+                    <ResponsiveCard variant="default" className="relative overflow-visible" padding="md">
+                      <div
+                        className="absolute left-0 top-0 h-full w-2 bg-green-600 rounded-l-lg"
+                        aria-hidden="true"
+                      />
+                      <div className="relative pl-4">
+                        <h3 className="text-2xl sm:text-3xl font-semibold mb-3 border-b-2 border-green-600 inline-block">
+                          Mission
+                        </h3>
+                        <p className='text-base sm:text-lg text-gray-600 leading-relaxed'>
+                          We believe negotiation is a foundational skill that shapes careers, relationships, and leadership. We cultivate confident, strategic negotiators through hands-on training and expert insight.
+                        </p>
+                      </div>
+                    </ResponsiveCard>
+                  </motion.div>
+
+                  {/* Our Work Card */}
+                  <motion.div variants={cardItem}>
+                    <ResponsiveCard variant="default" className="relative overflow-visible" padding="md">
+                      <div
+                        className="absolute left-0 top-0 h-full w-2 bg-green-600 rounded-l-lg"
+                        aria-hidden="true"
+                      />
+                      <div className="relative pl-4">
+                        <h3 className="text-2xl sm:text-3xl font-semibold mb-3 border-b-2 border-green-600 inline-block">
+                          Our Work
+                        </h3>
+                        <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
+                          Through workshops and realistic simulations, members apply theory to practice, build communication skills, and learn to lead in collaborative settings.
+                        </p>
+                      </div>
+                    </ResponsiveCard>
+                  </motion.div>
+
+                  {/* Current Initiatives Card */}
+                  <motion.div variants={cardItem}>
+                    <ResponsiveCard variant="elevated" className="relative overflow-visible" padding="md">
+                      <div
+                        className="absolute left-0 top-0 h-full w-2 bg-green-600 rounded-l-lg"
+                        aria-hidden="true"
+                      />
+                      <div className="relative pl-4">
+                        <h3 className="text-2xl sm:text-3xl font-semibold mb-3 border-b-2 border-green-600 inline-block">
+                          Current Initiatives
+                        </h3>
+                        <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
+                          We&apos;re building internship partnerships and advocating for undergraduate negotiation curriculum. Recent wins include promising internship conversations and a planned General Education course for Fall 2026.
+                        </p>
+                      </div>
+                    </ResponsiveCard>
+                  </motion.div>
+                </motion.div>
               </ResponsiveContainer>
             </motion.div>
           </ResponsiveSection>
 
-          {/* Our Work Section */}
-          <ResponsiveSection background="gray" padding="lg">
-            <motion.div
-              initial={{ x: '-100%', opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: 'easeOut' }}
-            >
-              <ResponsiveContainer maxWidth="4xl">
-                <ResponsiveCard variant="default" className="relative overflow-visible text-right">
-                  <div
-                    className="absolute right-0 top-0 h-full w-2 bg-green-600 rounded-r-lg"
-                    aria-hidden="true"
-                  />
-                  <div className="relative pr-4">
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 border-b-2 border-green-600 inline-block">
-                      Our Work
-                    </h2>
-                    <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
-                      Through interactive workshops and realistic negotiation simulations, we offer students the
-                      opportunity to apply theory to practice. Members role-play real-world scenarios, strengthening
-                      their ability to communicate, think strategically, and lead effectively in a collaborative setting.
-                    </p>
-                  </div>
-                </ResponsiveCard>
-              </ResponsiveContainer>
-            </motion.div>
-          </ResponsiveSection>
-
-
-          <ResponsiveSection background="white" padding="md">
+          <ResponsiveSection background="white" padding="sm">
             <ResponsiveContainer maxWidth="2xl">
               <div className="w-full max-w-md mx-auto">
                 <Image
@@ -110,13 +139,13 @@ export default function Home() {
           </ResponsiveSection>
 
           <motion.section
-            className="py-15 px-6 bg-white text-black relative"
+            className="py-8 px-6 bg-white text-black relative"
             initial={{ x: '100%', opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            <div className="relative ml-[15%] w-[70%] bg-gray-100 p-8 rounded-lg overflow-visible">
+            <div className="relative ml-[15%] w-[70%]  p-8 rounded-lg overflow-visible">
               <div
                 className="absolute left-0 top-0 h-full w-2 bg-green-600 rounded-l-lg"
                 aria-hidden="true"
@@ -162,7 +191,7 @@ export default function Home() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                     {['HLS_PON.png', 'FAS_HCWC.png', 'HKS_CPL.png', 'NTF.jpg'].map((src, i) => (
-                      <div key={i} className="p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                      <div key={i} className="p-4 bg-gray-50 rounded-lg shadow-md hover:shadow-lg transition-shadow">
                         <div className="relative w-full h-32 md:h-48">
                           <Image
                             src={`/images/${src}`}

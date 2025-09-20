@@ -14,16 +14,16 @@ const ResponsiveContainer: React.FC<ResponsiveContainerProps> = ({
   children,
   className,
   as: Component = 'div',
-  padding = 'md',
+  padding = 'sm',
   maxWidth = '7xl',
   centered = true,
 }) => {
   const paddingClasses = {
     none: '',
-    sm: 'px-4 py-6 md:px-6 md:py-8',
-    md: 'px-6 py-8 md:px-8 md:py-12',
-    lg: 'px-8 py-12 md:px-12 md:py-16',
-    xl: 'px-12 py-16 md:px-16 md:py-20',
+    sm: 'px-4 py-4 md:px-6 md:py-6',
+    md: 'px-6 py-6 md:px-8 md:py-8',
+    lg: 'px-8 py-8 md:px-10 md:py-10',
+    xl: 'px-10 py-10 md:px-12 md:py-12',
   };
 
   const maxWidthClasses = {

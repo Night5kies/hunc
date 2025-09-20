@@ -36,7 +36,7 @@ export default function NegotiationSimulations() {
 
   return (
     <LazyMotion features={domAnimation}>
-      <ResponsiveSection background="white" padding="lg" className="min-h-screen bg-[url('/images/leavesbgl.png')] bg-cover bg-center">
+      <ResponsiveSection background="white" padding="lg" className="min-h-screen bg-cover bg-center">
         <ResponsiveContainer maxWidth="6xl">
           <header className="text-center mb-12">
             <m.h1

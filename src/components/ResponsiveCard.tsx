@@ -16,7 +16,7 @@ const ResponsiveCard: React.FC<ResponsiveCardProps> = ({
   className,
   as: Component = 'div',
   variant = 'default',
-  padding = 'md',
+  padding = 'sm',
   hover = false,
   onClick,
 }) => {
@@ -29,9 +29,9 @@ const ResponsiveCard: React.FC<ResponsiveCardProps> = ({
 
   const paddingClasses = {
     none: '',
-    sm: 'p-4 md:p-6',
-    md: 'p-6 md:p-8',
-    lg: 'p-8 md:p-10',
+    sm: 'p-3 md:p-4',
+    md: 'p-4 md:p-6',
+    lg: 'p-6 md:p-8',
   };
 
   const hoverClasses = hover

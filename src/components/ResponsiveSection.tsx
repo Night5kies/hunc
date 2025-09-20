@@ -16,7 +16,7 @@ const ResponsiveSection: React.FC<ResponsiveSectionProps> = ({
   className,
   as: Component = 'section',
   background = 'white',
-  padding = 'md',
+  padding = 'sm',
   alignment = 'left',
   fullWidth = false,
 }) => {
@@ -29,10 +29,10 @@ const ResponsiveSection: React.FC<ResponsiveSectionProps> = ({
 
   const paddingClasses = {
     none: '',
-    sm: 'py-8 md:py-12',
-    md: 'py-12 md:py-16',
-    lg: 'py-16 md:py-20',
-    xl: 'py-20 md:py-24',
+    sm: 'py-6 md:py-8',
+    md: 'py-8 md:py-10',
+    lg: 'py-10 md:py-12',
+    xl: 'py-12 md:py-14',
   };
 
   const alignmentClasses = {
