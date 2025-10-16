@@ -96,7 +96,7 @@ export default function Home() {
                           Our Work
                         </h3>
                         <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
-                          Through workshops and realistic simulations, members apply theory to practice, build communication skills, and learn to lead in collaborative settings.
+                          Through interactive workshops and realistic negotiation simulations, we offer students the opportunity to apply theory from the Harvard Principled Negotiation Method to practice.
                         </p>
                       </div>
                     </ResponsiveCard>
@@ -174,37 +174,54 @@ export default function Home() {
 
 
           {/* Partners Section */}
-          <ResponsiveSection background="white" padding="lg">
+          <ResponsiveSection background="gray" padding="lg">
             <motion.div
-              initial={{ x: '100%', opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: 'easeOut' }}
+              transition={{ duration: 0.8 }}
             >
               <ResponsiveContainer maxWidth="6xl">
-                <ResponsiveCard variant="default" className="relative overflow-visible">
-                  <div className="text-center mb-8">
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 border-b-2 border-green-600 inline-block">
-                      Our Partners
-                    </h2>
-                  </div>
+                <div className="text-center mb-12">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 border-b-4 border-green-600 inline-block">
+                    Our Partners
+                  </h2>
+                  <p className="text-gray-600 max-w-2xl mx-auto mt-4">
+                    We collaborate with leading institutions to provide our members with unparalleled opportunities in negotiation education and practice.
+                  </p>
+                </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-                    {['HLS_PON.png', 'FAS_HCWC.png', 'HKS_CPL.png', 'NTF.jpg'].map((src, i) => (
-                      <div key={i} className="p-4 bg-gray-50 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                        <div className="relative w-full h-32 md:h-48">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                  {[
+                    { src: 'HLS_PON.png', name: 'Harvard Law School Program on Negotiation' },
+                    { src: 'FAS_HCWC.png', name: 'Harvard College Writing Center' },
+                    { src: 'HKS_CPL.png', name: 'Harvard Kennedy School Center for Public Leadership' },
+                    { src: 'NTF.jpg', name: 'Negotiation Task Force' }
+                  ].map((partner, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.1 }}
+                    >
+                      <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 h-full flex flex-col items-center justify-center group">
+                        <div className="relative w-full h-32 md:h-40 mb-4">
                           <Image
-                            src={`/images/${src}`}
-                            alt={`Partner ${i + 1}`}
+                            src={`/images/${partner.src}`}
+                            alt={partner.name}
                             fill
-                            className="object-contain"
+                            className="object-contain transition-transform duration-300 group-hover:scale-105"
                             unoptimized
                           />
                         </div>
+                        <p className="text-sm text-gray-600 text-center font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          {partner.name}
+                        </p>
                       </div>
-                    ))}
-                  </div>
-                </ResponsiveCard>
+                    </motion.div>
+                  ))}
+                </div>
               </ResponsiveContainer>
             </motion.div>
           </ResponsiveSection>
