@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { LazyMotion, domAnimation, motion } from 'framer-motion';
-import { ResponsiveContainer, ResponsiveSection, ResponsiveCard } from '@/components';
+import { ResponsiveContainer, ResponsiveSection, ResponsiveCard, NewsletterForm } from '@/components';
 import HeroRotator from '@/components/HeroRotator';
 
 export default function Home() {
@@ -224,6 +224,18 @@ export default function Home() {
                 </div>
               </ResponsiveContainer>
             </motion.div>
+          </ResponsiveSection>
+
+          {/* Newsletter Signup */}
+          <ResponsiveSection background="white" padding="md">
+            <ResponsiveContainer maxWidth="2xl">
+              <div className="text-center">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 border-b-4 border-green-600 inline-block">
+                  Stay Connected
+                </h2>
+                <NewsletterForm />
+              </div>
+            </ResponsiveContainer>
           </ResponsiveSection>
         </div>
 
