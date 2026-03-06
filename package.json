@@ -3,18 +3,30 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
+    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "payload": "payload",
+    "generate:types": "payload generate:types",
+    "generate:importmap": "payload generate:importmap",
+    "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@payloadcms/db-sqlite": "3.78.0",
+    "@payloadcms/next": "3.78.0",
+    "@payloadcms/richtext-lexical": "3.78.0",
+    "@payloadcms/ui": "3.78.0",
     "clsx": "^2.1.1",
+    "cross-env": "^10.0.0",
+    "dotenv": "^17.2.1",
     "framer-motion": "^12.12.2",
-    "next": "^15.5.12",
+    "graphql": "^16.11.0",
+    "next": "15.4.11",
+    "payload": "3.78.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "scroll-carousel": "^1.2.7",
+    "sharp": "^0.34.3",
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
