@@ -28,5 +28,30 @@ export const Home: GlobalConfig = {
       name: "currentInitiatives",
       type: "textarea",
     },
+    {
+      name: "currentInitiativesHeading",
+      type: "text",
+      defaultValue: "Current Initiatives",
+    },
+    {
+      name: "initiatives",
+      type: "array",
+      labels: {
+        singular: "Initiative",
+        plural: "Initiatives",
+      },
+      fields: [
+        {
+          name: "title",
+          type: "text",
+          required: true,
+        },
+        {
+          name: "description",
+          type: "textarea",
+          required: true,
+        },
+      ],
+    },
   ],
 };

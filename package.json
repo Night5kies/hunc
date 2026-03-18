@@ -12,9 +12,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@payloadcms/db-postgres": "3.78.0",
     "@payloadcms/db-sqlite": "3.78.0",
     "@payloadcms/next": "3.78.0",
     "@payloadcms/richtext-lexical": "3.78.0",
+    "@payloadcms/storage-s3": "^3.78.0",
     "@payloadcms/ui": "3.78.0",
     "clsx": "^2.1.1",
     "cross-env": "^10.0.0",
