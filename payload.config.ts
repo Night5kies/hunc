@@ -28,6 +28,9 @@ const storageRegion = process.env.S3_REGION || "us-east-1";
 const useS3Storage = Boolean(
   storageBucket && storageEndpoint && storageAccessKeyId && storageSecretAccessKey,
 );
+const supabasePublicStorageURL = storageEndpoint
+  ? storageEndpoint.replace("/storage/v1/s3", "/storage/v1/object/public")
+  : null;
 
 export default buildConfig({
   admin: {
@@ -56,6 +59,10 @@ export default buildConfig({
         media: {
           disableLocalStorage: true,
           disablePayloadAccessControl: true,
+          generateFileURL: ({ filename, prefix = "" }) => {
+            const objectPath = [prefix, encodeURIComponent(filename)].filter(Boolean).join("/");
+            return `${supabasePublicStorageURL}/${storageBucket}/${objectPath}`;
+          },
           prefix: "media",
         },
       },
