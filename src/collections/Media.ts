@@ -1,4 +1,28 @@
-import type { CollectionConfig } from "payload";
+import type { CollectionAfterReadHook, CollectionConfig } from "payload";
+
+import { getSupabasePublicMediaURL } from "../lib/getSupabasePublicMediaURL";
+
+const syncSupabaseThumbnailURL: CollectionAfterReadHook = ({ doc }) => {
+  const prefix = typeof doc?.prefix === "string" ? doc.prefix : "media";
+  const thumbnailFilename = typeof doc?.sizes?.thumbnail?.filename === "string"
+    ? doc.sizes.thumbnail.filename
+    : null;
+
+  const thumbnailURL = getSupabasePublicMediaURL({
+    filename: thumbnailFilename,
+    prefix,
+  });
+
+  if (thumbnailURL) {
+    if (doc.sizes?.thumbnail) {
+      doc.sizes.thumbnail.url = thumbnailURL;
+    }
+
+    doc.thumbnailURL = thumbnailURL;
+  }
+
+  return doc;
+};
 
 export const Media: CollectionConfig = {
   slug: "media",
@@ -7,6 +31,9 @@ export const Media: CollectionConfig = {
     create: ({ req }) => Boolean(req.user),
     update: ({ req }) => Boolean(req.user),
     delete: ({ req }) => Boolean(req.user),
+  },
+  hooks: {
+    afterRead: [syncSupabaseThumbnailURL],
   },
   upload: {
     staticDir: "media",
